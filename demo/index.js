@@ -7,7 +7,7 @@ import '../anypoint-listbox.js';
 class ComponentDemo extends ArcDemoPage {
   constructor() {
     super();
-    this._componentName = 'anypoint-menu-mixin';
+    this._componentName = 'anypoint-listbox';
     this._mdHandler = this._mdHandler.bind(this);
     this.fruits = ['Apple', 'Apricot', 'Avocado',
       'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry',
