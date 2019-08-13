@@ -24,6 +24,15 @@ describe('AnypointListbox', () => {
   async function roleFixture() {
     return await fixture(`<anypoint-listbox role="menu"></anypoint-listbox>`);
   }
+
+  async function legacyFixture() {
+    return await fixture(`<anypoint-listbox legacy>
+      <div>Item 1</div>
+      <div>Item 2</div>
+      <div>Item 3</div>
+      <div>Item 4</div>
+    </anypoint-listbox>`);
+  }
   // This test to be run first as this element sets a global variable
   // (in scope of the element) and increases value each time this function is used.
   describe('_ensureNodeId()', () => {
@@ -105,6 +114,33 @@ describe('AnypointListbox', () => {
       node.id = 'test';
       element._setActiveDescendant(node);
       assert.equal(element.getAttribute('aria-activedescendant'), 'test');
+    });
+  });
+
+  describe('legacy state', () => {
+    it('sets legacy attribute on children', async () => {
+      const element = await legacyFixture();
+      const nodes = element.querySelectorAll('div');
+      for (let i = 0; i < nodes.length; i++) {
+        assert.isTrue(nodes[i].hasAttribute('legacy'));
+      }
+    });
+
+    it('removes legacy attribute from the children', async () => {
+      const element = await legacyFixture();
+      element.legacy = false;
+      const nodes = element.querySelectorAll('div');
+      for (let i = 0; i < nodes.length; i++) {
+        assert.isFalse(nodes[i].hasAttribute('legacy'));
+      }
+    });
+
+    it('ignores adding legacy on children at the init time', async () => {
+      const element = await basicFixture();
+      const nodes = element.querySelectorAll('div');
+      for (let i = 0; i < nodes.length; i++) {
+        assert.isFalse(nodes[i].hasAttribute('legacy'));
+      }
     });
   });
 

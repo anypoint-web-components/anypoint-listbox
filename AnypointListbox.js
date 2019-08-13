@@ -23,6 +23,28 @@ export class AnypointListbox extends AnypointMenuMixin(LitElement) {
     return html`<slot></slot>`;
   }
 
+  static get properties() {
+    return {
+      /**
+       * Enables Anypoint legacy theme.
+       */
+      legacy: { type: Boolean, reflect: true }
+    };
+  }
+
+  get legacy() {
+    return this._legacy;
+  }
+
+  set legacy(value) {
+    const old = this._legacy;
+    if (old === value) {
+      return;
+    }
+    this._legacy = value;
+    this._updateChildrenLegacy(value);
+  }
+
   constructor() {
     super();
     this.useAriaSelected = true;
@@ -53,6 +75,14 @@ export class AnypointListbox extends AnypointMenuMixin(LitElement) {
     this.removeEventListener('select', this._selectHandler);
     this.removeEventListener('deselect', this._deselectHandler);
   }
+
+  firstUpdated() {
+    const { legacy } = this;
+    if (legacy) {
+      this._updateChildrenLegacy(legacy);
+    }
+  }
+
   /**
    * Initializes `aria-activedescendant` when element is attached to the DOM.
    */
@@ -93,6 +123,31 @@ export class AnypointListbox extends AnypointMenuMixin(LitElement) {
     if (!node.id) {
       node.id = 'anypointlistbox-' + globalId;
       globalId++;
+    }
+  }
+  /**
+   * Updates `legacy` state on children.
+   * This is a convinience method to set `legacy` property on this element
+   * and propagate it on children instead of setting this property on each
+   * item separately.
+   * @param {Boolean} legacy Current state of `legacy` property
+   */
+  _updateChildrenLegacy(legacy) {
+    const slot = this.shadowRoot.querySelector('slot');
+    if (!slot) {
+      return;
+    }
+    const nodes = slot.assignedNodes();
+    for (let i = 0, len = nodes.length; i < len; i++) {
+      const node = nodes[i];
+      if (node.nodeType !== Node.ELEMENT_NODE) {
+        continue;
+      }
+      if (legacy) {
+        node.setAttribute('legacy', '');
+      } else {
+        node.removeAttribute('legacy', '');
+      }
     }
   }
 }
