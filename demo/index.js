@@ -2,13 +2,17 @@ import { html } from 'lit-html';
 import { ArcDemoPage } from '@advanced-rest-client/arc-demo-helper/ArcDemoPage.js';
 import '@advanced-rest-client/arc-demo-helper/arc-demo-helper.js';
 import '@anypoint-web-components/anypoint-item/anypoint-item.js';
+import '@advanced-rest-client/arc-demo-helper/arc-interactive-demo.js';
 import '../anypoint-listbox.js';
 
 class ComponentDemo extends ArcDemoPage {
   constructor() {
     super();
     this._componentName = 'anypoint-listbox';
-    this._mdHandler = this._mdHandler.bind(this);
+    this.initObservableProperties([
+      'demoLegacy'
+    ]);
+    this.demoStates = ['Normal', 'Legacy'];
     this.fruits = ['Apple', 'Apricot', 'Avocado',
       'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry',
       'Boysenberry', 'Cantaloupe', 'Currant', 'Cherry', 'Cherimoya',
@@ -19,112 +23,225 @@ class ComponentDemo extends ArcDemoPage {
       'Lime', 'Loquat', 'Lychee', 'Mango', 'Marion berry', 'Melon', 'Miracle fruit',
       'Mulberry', 'Nectarine', 'Olive', 'Orange'
     ];
+
+    this._mainDemoStateHandler = this._mainDemoStateHandler.bind(this);
   }
 
-  _mdHandler(e) {
-    if (e.target.checked) {
-      document.body.classList.add('material');
-    } else {
-      document.body.classList.remove('material');
+  _mainDemoStateHandler(e) {
+    const state = e.detail.value;
+    switch (state) {
+      case 0:
+        this.demoLegacy = false;
+        break;
+      case 1:
+        this.demoLegacy = true;
+        break;
     }
   }
 
+  _demoTemplate() {
+    const {
+      demoStates,
+      darkThemeActive,
+      demoLegacy
+    } = this;
+    return html`<section class="documentation-section">
+    <h3>Interactive demo</h3>
+    <p>
+      This demo lets you preview the listbox element with various
+      configuration options.
+    </p>
+    <arc-interactive-demo
+      .states="${demoStates}"
+      @state-chanegd="${this._mainDemoStateHandler}"
+      ?dark="${darkThemeActive}"
+    >
+      <anypoint-listbox slot="content" ?legacy="${demoLegacy}">
+        <anypoint-item>API project 1</anypoint-item>
+        <anypoint-item>API project 2</anypoint-item>
+        <anypoint-item>API project 3</anypoint-item>
+        <anypoint-item>API project 4</anypoint-item>
+      </anypoint-listbox>
+    </arc-interactive-demo>
+    </section>`;
+  }
 
-  _headerControlsTemplate() {
-    return html`<div class="settings-action-item">
-      <paper-toggle-button @checked-changed="${this._darkThemeHandler}">Toggle dark theme</paper-toggle-button>
-    </div>
-    <div class="settings-action-item">
-      <paper-toggle-button @checked-changed="${this._mdHandler}">Toggle material design</paper-toggle-button>
-    </div>
-    <div class="settings-action-item">
-      <paper-toggle-button @checked-changed="${this._narrowHandler}">Toggle narrow attribute</paper-toggle-button>
-    </div>
-    <div class="settings-action-item">
-      <paper-toggle-button checked @checked-changed="${this._stylesHandler}">Toggle styles</paper-toggle-button>
-    </div>`;
+  _introductionTemplate() {
+    return html`
+      <section class="documentation-section">
+        <h3>Introduction</h3>
+        <p>
+          This component is based on Material Design list item and adjusted for
+          Anypoint platform components.
+        </p>
+        <p>
+          Anypoint web components are set of components that allows to build
+          Anypoint enabled UI in open source projects.
+        </p>
+        <p>
+          An element to render accessible list box with selection options.
+          It is to be used in menus, drowpdown menus, and lists.
+        </p>
+        <p>
+          The element works best with <code>anypoin-item</code> but can be sued with
+          any HTML element.
+        </p>
+      </section>
+    `;
+  }
+
+  _usageTemplate() {
+    return html`
+      <section class="documentation-section">
+        <h2>Usage</h2>
+        <p>Anypoint listbox comes with 2 predefied styles:</p>
+        <ul>
+          <li><b>Normal</b></li>
+          <li>
+            <b>Legacy</b> - To provide compatibility with legacy Anypoint design
+          </li>
+        </ul>
+
+        <p>
+          Even though the element has no particular styling options for legacy style,
+          it sets <code>legacy</code> attribute on children. This way you can
+          propagate Anypoint theme without setting the attribute on each element.
+        </p>
+
+        <h3>Selection</h3>
+        <p>
+          Use <code>selected</code> attribute to select an item. By default the index of the
+          item is used to make the selection.
+        </p>
+
+        <anypoint-listbox selected="1">
+          <anypoint-item>API project 1</anypoint-item>
+          <anypoint-item>API project 2</anypoint-item>
+          <anypoint-item>API project 3</anypoint-item>
+          <anypoint-item>API project 4</anypoint-item>
+        </anypoint-listbox>
+
+        <details>
+            <summary>Code example</summary>
+            <code>
+              <pre>
+                &lt;anypoint-listbox selected="1"&gt;
+                  &lt;anypoint-item&gt;API project 1&lt;/anypoint-item&gt;
+                  &lt;anypoint-item&gt;API project 2&lt;/anypoint-item&gt;
+                  &lt;anypoint-item&gt;API project 3&lt;/anypoint-item&gt;
+                  &lt;anypoint-item&gt;API project 4&lt;/anypoint-item&gt;
+                &lt;/anypoint-listbox&gt;
+              </pre>
+            </code>
+        </details>
+
+        <p>
+          Use <code>attrforselected</code> attribute to make a selection based on the attribute value.
+        </p>
+
+        <anypoint-listbox attrforselected="data-project-id" selected="p2">
+          <anypoint-item data-project-id="p1">API project 1</anypoint-item>
+          <anypoint-item data-project-id="p2">API project 2</anypoint-item>
+          <anypoint-item data-project-id="p3">API project 3</anypoint-item>
+          <anypoint-item data-project-id="p4">API project 4</anypoint-item>
+        </anypoint-listbox>
+
+        <details>
+            <summary>Code example</summary>
+            <code>
+              <pre>
+              &lt;anypoint-listbox attrforselected="data-project-id" selected="p2"&gt;
+                &lt;anypoint-item data-project-id="p1"&gt;API project 1&lt;/anypoint-item&gt;
+                &lt;anypoint-item data-project-id="p2"&gt;API project 2&lt;/anypoint-item&gt;
+                &lt;anypoint-item data-project-id="p3"&gt;API project 3&lt;/anypoint-item&gt;
+                &lt;anypoint-item data-project-id="p4"&gt;API project 4&lt;/anypoint-item&gt;
+              &lt;/anypoint-listbox&gt;
+              </pre>
+            </code>
+        </details>
+
+        <h3>Multi selection</h3>
+        <p>
+          Use <code>multi</code> attribute to enable multi selection of list items.
+        </p>
+
+        <anypoint-listbox multi>
+          <anypoint-item>API project 1</anypoint-item>
+          <anypoint-item>API project 2</anypoint-item>
+          <anypoint-item>API project 3</anypoint-item>
+          <anypoint-item>API project 4</anypoint-item>
+        </anypoint-listbox>
+
+        <details>
+            <summary>Code example</summary>
+            <code>
+              <pre>
+              &lt;anypoint-listbox multi&gt;
+                &lt;anypoint-item&gt;API project 1&lt;/anypoint-item&gt;
+                &lt;anypoint-item&gt;API project 2&lt;/anypoint-item&gt;
+                &lt;anypoint-item&gt;API project 3&lt;/anypoint-item&gt;
+                &lt;anypoint-item&gt;API project 4&lt;/anypoint-item&gt;
+              &lt;/anypoint-listbox&gt;
+              </pre>
+            </code>
+        </details>
+      </section>
+
+      <h3>Explicit selection</h3>
+      <p>
+        Use <code>selectable</code> attribute define a css selector of items that can be selected
+        on the list. It is helpful if the list contain non-selctable items like horizontal lines.
+      </p>
+
+      <anypoint-listbox selectable=".allowed">
+      <anypoint-item class="allowed">API project 1</anypoint-item>
+      <anypoint-item class="allowed">API project 2</anypoint-item>
+      <hr>
+      <anypoint-item class="allowed">API project 3</anypoint-item>
+      <anypoint-item class="allowed">API project 4</anypoint-item>
+      </anypoint-listbox>
+
+      <details>
+        <summary>Code example</summary>
+        <code>
+          <pre>
+            &lt;anypoint-listbox selectable=".allowed"&gt;
+            &lt;anypoint-item class="allowed"&gt;API project 1&lt;/anypoint-item&gt;
+            &lt;anypoint-item class="allowed"&gt;API project 2&lt;/anypoint-item&gt;
+            &lt;hr&gt;
+            &lt;anypoint-item class="allowed"&gt;API project 3&lt;/anypoint-item&gt;
+            &lt;anypoint-item class="allowed"&gt;API project 4&lt;/anypoint-item&gt;
+            &lt;/anypoint-listbox&gt;
+          </pre>
+        </code>
+      </details>
+    </section>
+
+    <h3>Selection while typping</h3>
+    <p>
+      When the element is focused after the user start typing item name, the matching item
+      becomes focused item. The user can confirm selection via space bar / enter key.
+    </p>
+
+    <anypoint-listbox class="scrolled">
+    ${this.fruits.map((item) => html`<anypoint-item role="option">${item}</anypoint-item>`)}
+    </anypoint-listbox>
+    `;
   }
 
   contentTemplate() {
     return html`
-      <div class="card">
-        <h2>Default state</h2>
-        <arc-demo-helper>
-          <template>
-            <anypoint-listbox>
-              <anypoint-item>API project 1</anypoint-item>
-              <anypoint-item>API project 2</anypoint-item>
-              <anypoint-item>API project 3</anypoint-item>
-              <anypoint-item>API project 4</anypoint-item>
-            </anypoint-listbox>
-          </template>
-        </arc-demo-helper>
-      </div>
+    <h2>Anypoint item</h2>
+    ${this._demoTemplate()}
+    ${this._introductionTemplate()}
+    ${this._usageTemplate()}`;
+  }
 
-      <div class="card">
-        <h2>Select item with <code>selected</code> property</h2>
-        <arc-demo-helper>
-          <template>
-            <anypoint-listbox selected="1">
-              <anypoint-item>API project 1</anypoint-item>
-              <anypoint-item>API project 2</anypoint-item>
-              <anypoint-item>API project 3</anypoint-item>
-              <anypoint-item>API project 4</anypoint-item>
-            </anypoint-listbox>
-          </template>
-        </arc-demo-helper>
-      </div>
-
-      <div class="card">
-        <h2>Select multiple items with <code>multi</code> property</h2>
-        <arc-demo-helper>
-          <template>
-            <anypoint-listbox multi>
-              <anypoint-item>API project 1</anypoint-item>
-              <anypoint-item>API project 2</anypoint-item>
-              <anypoint-item>API project 3</anypoint-item>
-              <anypoint-item>API project 4</anypoint-item>
-            </anypoint-listbox>
-          </template>
-        </arc-demo-helper>
-      </div>
-
-      <div class="card">
-        <h2>Use <code>selectable</code> to specify which elements can be selected</h2>
-        <arc-demo-helper>
-          <template>
-            <anypoint-listbox selectable=".allowed">
-              <anypoint-item class="allowed">API project 1</anypoint-item>
-              <anypoint-item class="allowed">API project 2</anypoint-item>
-              <hr>
-              <anypoint-item class="allowed">API project 3</anypoint-item>
-              <anypoint-item class="allowed">API project 4</anypoint-item>
-            </anypoint-listbox>
-          </template>
-        </arc-demo-helper>
-      </div>
-
-      <div class="card">
-        <h2>
-          Use <code>attrforselected</code> to select items by attribute value, rather than index.
-        </h2>
-        <arc-demo-helper>
-          <template>
-            <anypoint-listbox attrforselected="data-project-id" selected="p2">
-              <anypoint-item data-project-id="p1">API project 1</anypoint-item>
-              <anypoint-item data-project-id="p2">API project 2</anypoint-item>
-              <anypoint-item data-project-id="p3">API project 3</anypoint-item>
-              <anypoint-item data-project-id="p4">API project 4</anypoint-item>
-            </anypoint-listbox>
-          </template>
-        </arc-demo-helper>
-      </div>
-
+  _contentTemplate() {
+    return html`
       <div class="card">
         <h3>Auto focuses while typeing a name</h3>
-        <anypoint-listbox class="scrolled">
-          ${this.fruits.map((item) => html`<anypoint-item role="option">${item}</anypoint-item>`)}
-        </anypoint-listbox>
+
       </div>
     `;
   }
