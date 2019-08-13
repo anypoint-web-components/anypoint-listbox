@@ -47,7 +47,6 @@ export class AnypointListbox extends AnypointMenuMixin(LitElement) {
 
   constructor() {
     super();
-    this.useAriaSelected = true;
     this._selectHandler = this._selectHandler.bind(this);
     this._deselectHandler = this._deselectHandler.bind(this);
   }
