@@ -1,5 +1,5 @@
 import { fixture, assert, nextFrame } from '@open-wc/testing';
-import sinon from 'sinon/pkg/sinon-esm.js';
+import * as sinon from 'sinon/pkg/sinon-esm.js';
 import '../anypoint-listbox.js';
 
 describe('AnypointListbox', () => {
@@ -25,8 +25,8 @@ describe('AnypointListbox', () => {
     return await fixture(`<anypoint-listbox role="menu"></anypoint-listbox>`);
   }
 
-  async function legacyFixture() {
-    return await fixture(`<anypoint-listbox legacy>
+  async function compatibilityFixture() {
+    return await fixture(`<anypoint-listbox compatibility>
       <div>Item 1</div>
       <div>Item 2</div>
       <div>Item 3</div>
@@ -117,30 +117,43 @@ describe('AnypointListbox', () => {
     });
   });
 
-  describe('legacy state', () => {
-    it('sets legacy attribute on children', async () => {
-      const element = await legacyFixture();
+  describe('compatibility state', () => {
+    it('sets compatibility attribute on children', async () => {
+      const element = await compatibilityFixture();
       const nodes = element.querySelectorAll('div');
       for (let i = 0; i < nodes.length; i++) {
-        assert.isTrue(nodes[i].hasAttribute('legacy'));
+        assert.isTrue(nodes[i].hasAttribute('compatibility'));
       }
     });
 
-    it('removes legacy attribute from the children', async () => {
-      const element = await legacyFixture();
-      element.legacy = false;
+    it('removes compatibility attribute from the children', async () => {
+      const element = await compatibilityFixture();
+      element.compatibility = false;
       const nodes = element.querySelectorAll('div');
       for (let i = 0; i < nodes.length; i++) {
-        assert.isFalse(nodes[i].hasAttribute('legacy'));
+        assert.isFalse(nodes[i].hasAttribute('compatibility'));
       }
     });
 
-    it('ignores adding legacy on children at the init time', async () => {
+    it('ignores adding compatibility on children at the init time', async () => {
       const element = await basicFixture();
       const nodes = element.querySelectorAll('div');
       for (let i = 0; i < nodes.length; i++) {
-        assert.isFalse(nodes[i].hasAttribute('legacy'));
+        assert.isFalse(nodes[i].hasAttribute('compatibility'));
       }
+    });
+
+    it('sets compatibility on item when setting legacy', async () => {
+      const element = await basicFixture();
+      element.legacy = true;
+      assert.isTrue(element.legacy, 'legacy is set');
+      assert.isTrue(element.compatibility, 'compatibility is set');
+    });
+
+    it('returns compatibility value from item when getting legacy', async () => {
+      const element = await basicFixture();
+      element.compatibility = true;
+      assert.isTrue(element.legacy, 'legacy is set');
     });
   });
 

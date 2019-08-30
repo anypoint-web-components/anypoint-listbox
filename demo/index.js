@@ -10,9 +10,9 @@ class ComponentDemo extends ArcDemoPage {
     super();
     this._componentName = 'anypoint-listbox';
     this.initObservableProperties([
-      'demoLegacy'
+      'demoCompatibility'
     ]);
-    this.demoStates = ['Normal', 'Legacy'];
+    this.demoStates = ['Material Design', 'Anypoint'];
     this.fruits = ['Apple', 'Apricot', 'Avocado',
       'Banana', 'Bilberry', 'Blackberry', 'Blackcurrant', 'Blueberry',
       'Boysenberry', 'Cantaloupe', 'Currant', 'Cherry', 'Cherimoya',
@@ -31,10 +31,10 @@ class ComponentDemo extends ArcDemoPage {
     const state = e.detail.value;
     switch (state) {
       case 0:
-        this.demoLegacy = false;
+        this.demoCompatibility = false;
         break;
       case 1:
-        this.demoLegacy = true;
+        this.demoCompatibility = true;
         break;
     }
   }
@@ -43,7 +43,7 @@ class ComponentDemo extends ArcDemoPage {
     const {
       demoStates,
       darkThemeActive,
-      demoLegacy
+      demoCompatibility
     } = this;
     return html`<section class="documentation-section">
     <h3>Interactive demo</h3>
@@ -56,7 +56,7 @@ class ComponentDemo extends ArcDemoPage {
       @state-chanegd="${this._mainDemoStateHandler}"
       ?dark="${darkThemeActive}"
     >
-      <anypoint-listbox slot="content" ?legacy="${demoLegacy}">
+      <anypoint-listbox slot="content" ?compatibility="${demoCompatibility}">
         <anypoint-item>API project 1</anypoint-item>
         <anypoint-item>API project 2</anypoint-item>
         <anypoint-item>API project 3</anypoint-item>
@@ -98,13 +98,13 @@ class ComponentDemo extends ArcDemoPage {
         <ul>
           <li><b>Normal</b></li>
           <li>
-            <b>Legacy</b> - To provide compatibility with legacy Anypoint design
+            <b>Compatibility</b> - To provide compatibility with Anypoint design
           </li>
         </ul>
 
         <p>
-          Even though the element has no particular styling options for legacy style,
-          it sets <code>legacy</code> attribute on children. This way you can
+          Even though the element has no particular styling options for Anypoint style,
+          it sets <code>compatibility</code> attribute on children. This way you can
           propagate Anypoint theme without setting the attribute on each element.
         </p>
 

@@ -26,23 +26,35 @@ export class AnypointListbox extends AnypointMenuMixin(LitElement) {
   static get properties() {
     return {
       /**
-       * Enables Anypoint legacy theme.
+       * Enables compatibility with Anypoint components.
        */
-      legacy: { type: Boolean, reflect: true }
+      compatibility: { type: Boolean, reflect: true },
+      /**
+       * @deprecated Use `compatibility` instead
+       */
+      legacy: { type: Boolean },
     };
   }
 
   get legacy() {
-    return this._legacy;
+    return this.compatibility;
   }
 
   set legacy(value) {
-    const old = this._legacy;
+    this.compatibility = value;
+  }
+
+  get compatibility() {
+    return this._compatibility;
+  }
+
+  set compatibility(value) {
+    const old = this._compatibility;
     if (old === value) {
       return;
     }
-    this._legacy = value;
-    this._updateChildrenLegacy(value);
+    this._compatibility = value;
+    this._updateChildrenCompatibility(value);
   }
 
   constructor() {
@@ -76,9 +88,9 @@ export class AnypointListbox extends AnypointMenuMixin(LitElement) {
   }
 
   firstUpdated() {
-    const { legacy } = this;
-    if (legacy) {
-      this._updateChildrenLegacy(legacy);
+    const { compatibility } = this;
+    if (compatibility) {
+      this._updateChildrenCompatibility(compatibility);
     }
   }
 
@@ -125,13 +137,13 @@ export class AnypointListbox extends AnypointMenuMixin(LitElement) {
     }
   }
   /**
-   * Updates `legacy` state on children.
-   * This is a convinience method to set `legacy` property on this element
+   * Updates `compatibility` state on children.
+   * This is a convinience method to set `compatibility` property on this element
    * and propagate it on children instead of setting this property on each
    * item separately.
-   * @param {Boolean} legacy Current state of `legacy` property
+   * @param {Boolean} compatibility Current state of `compatibility` property
    */
-  _updateChildrenLegacy(legacy) {
+  _updateChildrenCompatibility(compatibility) {
     const slot = this.shadowRoot.querySelector('slot');
     if (!slot) {
       return;
@@ -142,10 +154,10 @@ export class AnypointListbox extends AnypointMenuMixin(LitElement) {
       if (node.nodeType !== Node.ELEMENT_NODE) {
         continue;
       }
-      if (legacy) {
-        node.setAttribute('legacy', '');
+      if (compatibility) {
+        node.setAttribute('compatibility', '');
       } else {
-        node.removeAttribute('legacy', '');
+        node.removeAttribute('compatibility', '');
       }
     }
   }
