@@ -4,7 +4,7 @@ import { AnypointMenuMixin } from '@anypoint-web-components/anypoint-menu-mixin/
 let globalId = 1;
 
 export class AnypointListbox extends AnypointMenuMixin(LitElement) {
-  static get styles() {
+  get styles() {
     return css`
     :host {
       display: block;
@@ -20,7 +20,7 @@ export class AnypointListbox extends AnypointMenuMixin(LitElement) {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return html`<style>${this.styles}</style><slot></slot>`;
   }
 
   static get properties() {
