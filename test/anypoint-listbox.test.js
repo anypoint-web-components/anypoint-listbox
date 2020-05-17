@@ -1,10 +1,13 @@
 import { fixture, assert, nextFrame } from '@open-wc/testing';
-import * as sinon from 'sinon/pkg/sinon-esm.js';
+import * as sinon from 'sinon';
 import '../anypoint-listbox.js';
+import { ensureNodeId } from '../src/AnypointListbox.js';
+
+/* eslint-disable no-plusplus */
 
 describe('AnypointListbox', () => {
   async function basicFixture() {
-    return await fixture(`<anypoint-listbox aria-label="Select one of the options">
+    return fixture(`<anypoint-listbox aria-label="Select one of the options">
       <div role="option">Item 1</div>
       <div role="option">Item 2</div>
       <div role="option">Item 3</div>
@@ -13,7 +16,7 @@ describe('AnypointListbox', () => {
   }
 
   async function selectedFixture() {
-    return await fixture(`<anypoint-listbox aria-label="Select one of the options" selected="1">
+    return fixture(`<anypoint-listbox aria-label="Select one of the options" selected="1">
       <div role="option">Item 1</div>
       <div role="option">Item 2</div>
       <div role="option">Item 3</div>
@@ -22,11 +25,11 @@ describe('AnypointListbox', () => {
   }
 
   async function roleFixture() {
-    return await fixture(`<anypoint-listbox role="menu"></anypoint-listbox>`);
+    return fixture(`<anypoint-listbox role="menu"></anypoint-listbox>`);
   }
 
   async function compatibilityFixture() {
-    return await fixture(`<anypoint-listbox compatibility>
+    return fixture(`<anypoint-listbox compatibility>
       <div>Item 1</div>
       <div>Item 2</div>
       <div>Item 3</div>
@@ -35,28 +38,23 @@ describe('AnypointListbox', () => {
   }
   // This test to be run first as this element sets a global variable
   // (in scope of the element) and increases value each time this function is used.
-  describe('_ensureNodeId()', () => {
-    let element;
-    beforeEach(async () => {
-      element = await basicFixture();
-    });
-
+  describe('ensureNodeId()', () => {
     it('adds id to a node if missing', () => {
       const node = document.createElement('span');
-      element._ensureNodeId(node);
+      ensureNodeId(node);
       assert.equal(node.id, 'anypointlistbox-1');
     });
 
     it('increments id counter', () => {
       const node = document.createElement('span');
-      element._ensureNodeId(node);
+      ensureNodeId(node);
       assert.equal(node.id, 'anypointlistbox-2');
     });
 
     it('respects existing id', () => {
       const node = document.createElement('span');
       node.id = 'my-id';
-      element._ensureNodeId(node);
+      ensureNodeId(node);
       assert.equal(node.id, 'my-id');
     });
   });
@@ -190,7 +188,7 @@ describe('AnypointListbox', () => {
       element.select(2);
       const node = element.selectedItem;
       const des = element.getAttribute('aria-activedescendant');
-      assert.notEmpty(des, 'aria-activedescendant is set');
+      assert.ok(des, 'aria-activedescendant is set');
       assert.equal(des, node.id);
     });
 
@@ -207,7 +205,7 @@ describe('AnypointListbox', () => {
       const element = await selectedFixture();
       const node = element.selectedItem;
       const des = element.getAttribute('aria-activedescendant');
-      assert.notEmpty(des, 'aria-activedescendant is set');
+      assert.ok(des, 'aria-activedescendant is set');
       assert.equal(des, node.id);
     });
   });
