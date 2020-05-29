@@ -54,3 +54,32 @@
  [f6d40d0](https://github.com/anypoint-web-components/anypoint-listbox/commit/f6d40d0b9bece3afa208f124a8c4e55e843cd194) by Pawel
 
 
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/anypoint-web-components/anypoint-listbox/compare/1.0.4...1.1.1) (2020-05-29)
+
+### Build
+
+* bumping version [80b04eb](https://github.com/anypoint-web-components/anypoint-listbox/commit/80b04eb4ba7858a452a3e1678e7b89add5735e18) by Pawel
+
+
+### Update
+
+* updating dev dependencies [2b069a5](https://github.com/anypoint-web-components/anypoint-listbox/commit/2b069a5001a45781e6576d252347613c236eb47c) by Pawel
+* [ci skip] automated merge master->stage. syncing main branches [3ccf57e](https://github.com/anypoint-web-components/anypoint-listbox/commit/3ccf57e4484add129f75d592ce031c2e46266b75) by Ci agent
+
+
+### Documentation
+
+* updating readme file [732e854](https://github.com/anypoint-web-components/anypoint-listbox/commit/732e8545cfc84f4dd0e108f15da4e10b2bd86f1d) by Pawel
+
+
+### Bug Fixes
+
+* fixing index.js import [cf38a12](https://github.com/anypoint-web-components/anypoint-listbox/commit/cf38a12478cde681d95d5a84d1b9d6d9c213de8a) by Pawel
+
+
+### Refactor
+
+* upgrading to open-wc standard [6b88978](https://github.com/anypoint-web-components/anypoint-listbox/commit/6b88978921def81c629f5b1a1239673a0b654eb8) by Pawel
+
+
