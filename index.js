@@ -1,1 +1,1 @@
-export { AnypointListbox } from './AnypointListbox.js';
+export { AnypointListbox } from './src/AnypointListbox.js';
