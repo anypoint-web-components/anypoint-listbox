@@ -1,7 +1,7 @@
 import { LitElement, CSSResult, TemplateResult } from 'lit-element';
 import { MenuMixin } from '@anypoint-web-components/anypoint-menu-mixin';
-import { MultiSelectableMixinConstructor } from '@anypoint-web-components/anypoint-selector/src/MultiSelectableMixin';
-import { SelectableMixinConstructor } from '@anypoint-web-components/anypoint-selector/src/SelectableMixin';
+import { MultiSelectableMixin } from '@anypoint-web-components/anypoint-selector/src/MultiSelectableMixin';
+import { SelectableMixin } from '@anypoint-web-components/anypoint-selector/src/SelectableMixin';
 /**
  * Ensures the node to have an ID.
  * It is later used with aria attributes.
@@ -26,6 +26,6 @@ export declare class AnypointListbox {
   _updateChildrenCompatibility(compatibility: boolean): void;
 }
 
-export interface AnypointListbox extends MenuMixin, SelectableMixinConstructor, MultiSelectableMixinConstructor, LitElement {
+export interface AnypointListbox extends MenuMixin, SelectableMixin, MultiSelectableMixin, LitElement {
 
 }
