@@ -135,3 +135,19 @@
 * fixing index.js import [cf38a12](https://github.com/anypoint-web-components/anypoint-listbox/commit/cf38a12478cde681d95d5a84d1b9d6d9c213de8a) by Pawel
 
 
+<a name="1.1.3"></a>
+## [1.1.3](https://github.com/anypoint-web-components/anypoint-listbox/compare/1.1.1...1.1.3) (2020-06-24)
+
+### Update
+
+* [ci skip] automated merge master->stage. syncing main branches [0dc949b](https://github.com/anypoint-web-components/anypoint-listbox/commit/0dc949bc97ea62d90e90be42692055490fa48034) by Ci agent
+* [ci skip] automated merge master->stage. syncing main branches [391b1f0](https://github.com/anypoint-web-components/anypoint-listbox/commit/391b1f0dc912620e64f983db7f9dc94bc5b83539) by Ci agent
+* [ci skip] automated merge master->stage. syncing main branches [fbc6953](https://github.com/anypoint-web-components/anypoint-listbox/commit/fbc695374bc2f4141c69e31cbdbdb83b2397aa2c) by Ci agent
+
+
+### Bug Fixes
+
+* renaming interfaces in types declaration [fdd9994](https://github.com/anypoint-web-components/anypoint-listbox/commit/fdd99941456a3e0958538ae01ebc491d33709710) by Pawel
+* fixing types declaration [cf26f4c](https://github.com/anypoint-web-components/anypoint-listbox/commit/cf26f4c92a3f125509ce0b8a48583aa738ad16c2) by Pawel
+
+
