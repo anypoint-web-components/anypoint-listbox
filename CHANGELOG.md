@@ -151,3 +151,23 @@
 * fixing types declaration [cf26f4c](https://github.com/anypoint-web-components/anypoint-listbox/commit/cf26f4c92a3f125509ce0b8a48583aa738ad16c2) by Pawel
 
 
+<a name="1.1.4"></a>
+## [1.1.4](https://github.com/anypoint-web-components/anypoint-listbox/compare/1.1.2...1.1.4) (2020-06-24)
+
+### Build
+
+* bumping version [b9f78f5](https://github.com/anypoint-web-components/anypoint-listbox/commit/b9f78f59a8311c4317fd8ee61808be3c48bc21c3) by Pawel
+
+
+### Update
+
+* updating the mixins [a1d465d](https://github.com/anypoint-web-components/anypoint-listbox/commit/a1d465dbbd75156c45a9f0b3dba2e41de9d5a8d2) by Pawel
+* [ci skip] automated merge master->stage. syncing main branches [110dc7c](https://github.com/anypoint-web-components/anypoint-listbox/commit/110dc7c6b90ca350440d2743087efd7f6e140ab2) by Ci agent
+* [ci skip] automated merge master->stage. syncing main branches [0dc949b](https://github.com/anypoint-web-components/anypoint-listbox/commit/0dc949bc97ea62d90e90be42692055490fa48034) by Ci agent
+
+
+### Bug Fixes
+
+* renaming interfaces in types declaration [fdd9994](https://github.com/anypoint-web-components/anypoint-listbox/commit/fdd99941456a3e0958538ae01ebc491d33709710) by Pawel
+
+
