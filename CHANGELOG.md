@@ -108,3 +108,30 @@
 * fixing index.js import [cf38a12](https://github.com/anypoint-web-components/anypoint-listbox/commit/cf38a12478cde681d95d5a84d1b9d6d9c213de8a) by Pawel
 
 
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/anypoint-web-components/anypoint-listbox/compare/1.1.0...1.1.2) (2020-06-24)
+
+### Build
+
+* bumping version [80b04eb](https://github.com/anypoint-web-components/anypoint-listbox/commit/80b04eb4ba7858a452a3e1678e7b89add5735e18) by Pawel
+
+
+### Update
+
+* [ci skip] automated merge master->stage. syncing main branches [391b1f0](https://github.com/anypoint-web-components/anypoint-listbox/commit/391b1f0dc912620e64f983db7f9dc94bc5b83539) by Ci agent
+* [ci skip] automated merge master->stage. syncing main branches [fbc6953](https://github.com/anypoint-web-components/anypoint-listbox/commit/fbc695374bc2f4141c69e31cbdbdb83b2397aa2c) by Ci agent
+* updating dev dependencies [2b069a5](https://github.com/anypoint-web-components/anypoint-listbox/commit/2b069a5001a45781e6576d252347613c236eb47c) by Pawel
+* [ci skip] automated merge master->stage. syncing main branches [3ccf57e](https://github.com/anypoint-web-components/anypoint-listbox/commit/3ccf57e4484add129f75d592ce031c2e46266b75) by Ci agent
+
+
+### Documentation
+
+* updating readme file [732e854](https://github.com/anypoint-web-components/anypoint-listbox/commit/732e8545cfc84f4dd0e108f15da4e10b2bd86f1d) by Pawel
+
+
+### Bug Fixes
+
+* fixing types declaration [cf26f4c](https://github.com/anypoint-web-components/anypoint-listbox/commit/cf26f4c92a3f125509ce0b8a48583aa738ad16c2) by Pawel
+* fixing index.js import [cf38a12](https://github.com/anypoint-web-components/anypoint-listbox/commit/cf38a12478cde681d95d5a84d1b9d6d9c213de8a) by Pawel
+
+
