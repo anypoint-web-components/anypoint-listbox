@@ -78,7 +78,8 @@ The element also support `aria-selected` attribute set on children when `useAria
 ## Usage
 
 ### Installation
-```
+
+```sh
 npm install --save @anypoint-web-components/anypoint-listbox
 ```
 

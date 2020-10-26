@@ -1,4 +1,4 @@
-import { AnypointListbox } from './src/AnypointListbox.js';
+import { AnypointListbox } from './src/AnypointListbox';
 
 declare global {
   interface HTMLElementTagNameMap {

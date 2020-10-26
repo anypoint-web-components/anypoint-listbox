@@ -12,6 +12,7 @@ export declare class AnypointListbox {
   styles: CSSResult;
   /**
    * Enables compatibility with Anypoint components.
+   * @attribute
    */
   compatibility: boolean;
   render(): TemplateResult;
@@ -19,7 +20,7 @@ export declare class AnypointListbox {
   connectedCallback(): void;
   disconnectedCallback(): void;
   firstUpdated(): void;
-  _initSeelction(): void;
+  _initSelection(): void;
   _selectHandler(e: CustomEvent): void;
   _setActiveDescendant(node: HTMLElement): void;
   _deselectHandler(): void;
@@ -27,5 +28,5 @@ export declare class AnypointListbox {
 }
 
 export interface AnypointListbox extends MenuMixin, SelectableMixin, MultiSelectableMixin, LitElement {
-
+  onselect: EventListener;
 }

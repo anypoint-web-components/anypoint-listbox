@@ -97,7 +97,7 @@ export class AnypointListbox extends MenuMixin(LitElement) {
     this.addEventListener('select', this._selectHandler);
     this.addEventListener('deselect', this._deselectHandler);
 
-    this._initSeelction();
+    this._initSelection();
   }
 
   disconnectedCallback() {
@@ -119,7 +119,7 @@ export class AnypointListbox extends MenuMixin(LitElement) {
   /**
    * Initializes `aria-activedescendant` when element is attached to the DOM.
    */
-  _initSeelction() {
+  _initSelection() {
     // @ts-ignore
     if (this.selectedItem) {
       // @ts-ignore
@@ -155,7 +155,7 @@ export class AnypointListbox extends MenuMixin(LitElement) {
 
   /**
    * Updates `compatibility` state on children.
-   * This is a convinience method to set `compatibility` property on this element
+   * This is a convenience method to set `compatibility` property on this element
    * and propagate it on children instead of setting this property on each
    * item separately.
    * @param {Boolean} compatibility Current state of `compatibility` property
