@@ -191,3 +191,34 @@
 * fixing types [0aa5b8c](https://github.com/anypoint-web-components/anypoint-listbox/commit/0aa5b8c492eca886f0847cab85dc94d98bc08967) by Pawel
 
 
+<a name="1.1.6"></a>
+## [1.1.6](https://github.com/anypoint-web-components/anypoint-listbox/compare/1.1.4...1.1.6) (2020-11-25)
+
+### Build
+
+* bumping version [ee63ba7](https://github.com/anypoint-web-components/anypoint-listbox/commit/ee63ba791d7386d86e9b9bb704237ffdc47107d2) by Pawel Psztyc
+
+
+### Continuous integration
+
+* adding GH action [cf222d9](https://github.com/anypoint-web-components/anypoint-listbox/commit/cf222d951ca604babbf34bbfbe3487217d3ca490) by Pawel Psztyc
+
+
+### Update
+
+* updating types [1373f5a](https://github.com/anypoint-web-components/anypoint-listbox/commit/1373f5abaef505177dacca34162f465e705ad275) by Pawel Psztyc
+* reformatting HTML [aecb1d2](https://github.com/anypoint-web-components/anypoint-listbox/commit/aecb1d26e615168f6206c5c0d6f78bdeb500cd28) by Pawel Psztyc
+* [ci skip] automated merge master->stage. syncing main branches [57a670a](https://github.com/anypoint-web-components/anypoint-listbox/commit/57a670a43d1faffeb68f7c273d8cdf6d4c34359c) by Ci agent
+* [ci skip] automated merge master->stage. syncing main branches [17d544d](https://github.com/anypoint-web-components/anypoint-listbox/commit/17d544d4a9a1153aa29c25549237c0d172a4f018) by Ci agent
+
+
+### Bug Fixes
+
+* fixing types [0aa5b8c](https://github.com/anypoint-web-components/anypoint-listbox/commit/0aa5b8c492eca886f0847cab85dc94d98bc08967) by Pawel
+
+
+### Testing
+
+* updating tests runner [967dba8](https://github.com/anypoint-web-components/anypoint-listbox/commit/967dba8e1b59a3a1bb82641e5e188428681c984b) by Pawel Psztyc
+
+
