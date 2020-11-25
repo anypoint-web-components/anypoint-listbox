@@ -40,9 +40,7 @@ export class AnypointListbox extends MenuMixin(LitElement) {
   }
 
   render() {
-    return html`<style>
-        ${this.styles}</style
-      ><slot></slot>`;
+    return html`<style>${this.styles}</style><slot></slot>`;
   }
 
   static get properties() {
