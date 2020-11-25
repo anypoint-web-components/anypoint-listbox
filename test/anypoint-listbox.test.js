@@ -5,7 +5,12 @@ import { ensureNodeId } from '../src/AnypointListbox.js';
 
 /* eslint-disable no-plusplus */
 
+/** @typedef {import('../index').AnypointListbox} AnypointListbox */
+
 describe('AnypointListbox', () => {
+  /**
+   * @returns {Promise<AnypointListbox>}
+   */
   async function basicFixture() {
     return fixture(`<anypoint-listbox aria-label="Select one of the options">
       <div role="option">Item 1</div>
@@ -15,6 +20,9 @@ describe('AnypointListbox', () => {
     </anypoint-listbox>`);
   }
 
+  /**
+   * @returns {Promise<AnypointListbox>}
+   */
   async function selectedFixture() {
     return fixture(`<anypoint-listbox aria-label="Select one of the options" selected="1">
       <div role="option">Item 1</div>
@@ -24,10 +32,16 @@ describe('AnypointListbox', () => {
     </anypoint-listbox>`);
   }
 
+  /**
+   * @returns {Promise<AnypointListbox>}
+   */
   async function roleFixture() {
     return fixture(`<anypoint-listbox role="menu"></anypoint-listbox>`);
   }
 
+  /**
+   * @returns {Promise<AnypointListbox>}
+   */
   async function compatibilityFixture() {
     return fixture(`<anypoint-listbox compatibility>
       <div>Item 1</div>
@@ -74,8 +88,8 @@ describe('AnypointListbox', () => {
     });
   });
 
-  describe('_initSeelction()', () => {
-    let element;
+  describe('_initSelection()', () => {
+    let element = /** @type AnypointListbox */ (null);
     beforeEach(async () => {
       element = await basicFixture();
     });
@@ -83,20 +97,20 @@ describe('AnypointListbox', () => {
     it('calls _setActiveDescendant() when has selection', () => {
       element.selected = 1;
       const spy = sinon.spy(element, '_setActiveDescendant');
-      element._initSeelction();
+      element._initSelection();
       const node = element.querySelectorAll('div')[1];
       assert.equal(spy.args[0][0], node);
     });
 
     it('ignores call to _setActiveDescendant() when no selection', () => {
       const spy = sinon.spy(element, '_setActiveDescendant');
-      element._initSeelction();
+      element._initSelection();
       assert.isFalse(spy.called);
     });
   });
 
   describe('_setActiveDescendant()', () => {
-    let element;
+    let element = /** @type AnypointListbox */ (null);
     beforeEach(async () => {
       element = await basicFixture();
     });

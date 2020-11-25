@@ -8,13 +8,18 @@ import { SelectableMixin } from '@anypoint-web-components/anypoint-selector/src/
  */
 export declare function ensureNodeId(node: HTMLElement): void;
 
-export declare class AnypointListbox {
+export declare class AnypointListbox extends MenuMixin(SelectableMixin(MultiSelectableMixin(LitElement))) {
   styles: CSSResult;
   /**
    * Enables compatibility with Anypoint components.
    * @attribute
    */
   compatibility: boolean;
+  /**
+   * Enables compatibility with Anypoint components.
+   * @deprecated Use `compatibility` instead.
+   */
+  legacy: boolean;
   render(): TemplateResult;
   constructor();
   connectedCallback(): void;
@@ -27,6 +32,6 @@ export declare class AnypointListbox {
   _updateChildrenCompatibility(compatibility: boolean): void;
 }
 
-export interface AnypointListbox extends MenuMixin, SelectableMixin, MultiSelectableMixin, LitElement {
-  onselect: EventListener;
-}
+// export interface AnypointListbox extends MenuMixin, SelectableMixin, MultiSelectableMixin, LitElement {
+//   onselect: EventListener;
+// }

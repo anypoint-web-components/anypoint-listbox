@@ -34,36 +34,31 @@
   },
   "devDependencies": {
     "@advanced-rest-client/arc-demo-helper": "^1.0.17",
-    "@advanced-rest-client/testing-karma-sl": "^1.4.2",
     "@anypoint-web-components/anypoint-item": "^1.0.8",
     "@anypoint-web-components/anypoint-styles": "^1.0.1",
-    "@open-wc/eslint-config": "^4.0.0",
-    "@open-wc/testing": "^2.5.29",
-    "@open-wc/testing-karma": "^4.0.9",
-    "@polymer/gen-typescript-declarations": "^1.6.2",
-    "deepmerge": "^4.2.2",
-    "es-dev-server": "^1.57.8",
-    "eslint": "^7.12.0",
-    "eslint-config-prettier": "^6.14.0",
+    "@open-wc/eslint-config": "^4.0.1",
+    "@open-wc/testing": "^2.5.32",
+    "@web/dev-server": "^0.0.24",
+    "@web/test-runner": "^0.9.12",
+    "@web/test-runner-playwright": "^0.6.6",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
     "husky": "^4.3.0",
-    "lint-staged": "^10.5.0",
-    "prettier": "^2.1.2",
-    "sinon": "^9.2.0",
-    "typescript": "^4.0.3",
+    "lint-staged": "^10.5.2",
+    "sinon": "^9.2.1",
+    "typescript": "^4.1.2",
     "typescript-lit-html-plugin": "^0.9.0"
   },
   "scripts": {
-    "start": "es-dev-server --app-index demo/index.html --node-resolve --open --watch",
+    "start": "web-dev-server --app-index demo/index.html --node-resolve --open --watch --root-dir .",
     "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
-    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
-    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
     "lint:types": "tsc",
-    "lint": "npm run lint:eslint && npm run lint:prettier",
-    "format": "npm run format:eslint && npm run format:prettier",
-    "test": "karma start --coverage",
-    "test:watch": "karma start --auto-watch=true --single-run=false",
-    "test:sl": "karma start karma.sl.config.js --compatibility auto --coverage"
+    "lint": "npm run lint:eslint",
+    "format": "npm run format:eslint",
+    "test": "web-test-runner test/**/*.test.js --coverage --node-resolve --playwright --browsers chromium firefox webkit",
+    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch --playwright --browsers chromium",
+    "gen:wc": "wca analyze \"*.js\" --outFile custom-elements.json"
   },
   "eslintConfig": {
     "extends": [
@@ -73,21 +68,20 @@
     "overrides": [
       {
         "files": [
-          "**/demo/**/*.js",
+          "demo/**/*.js",
+          "test/**/*.js",
           "**/demo/**/*.html"
         ],
         "rules": {
           "no-console": "off",
           "no-unused-expressions": "off",
+          "no-plusplus": "off",
+          "no-param-reassing": "off",
           "class-methods-use-this": "off",
           "import/no-extraneous-dependencies": "off"
         }
       }
     ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "arrowParens": "always"
   },
   "husky": {
     "hooks": {
@@ -96,8 +90,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
-      "prettier --write"
+      "eslint --fix"
     ]
   }
 }
