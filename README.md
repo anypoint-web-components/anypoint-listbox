@@ -1,10 +1,8 @@
+# anypoint-listbox
+
 [![Published on NPM](https://img.shields.io/npm/v/@anypoint-web-components/anypoint-listbox.svg)](https://www.npmjs.com/package/@anypoint-web-components/anypoint-listbox)
 
-[![Build Status](https://travis-ci.com/anypoint-web-components/anypoint-listbox.svg)](https://travis-ci.com/anypoint-web-components/anypoint-listbox)
-
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/anypoint-web-components/anypoint-listbox)
-
-# anypoint-listbox
+[![tests](https://github.com/anypoint-web-components/anypoint-listbox/actions/workflows/deployment.yml/badge.svg)](https://github.com/anypoint-web-components/anypoint-listbox/actions/workflows/deployment.yml)
 
 The `anypoint-listbox` implements accessible list of options styled for the Anypoint platform.
 
@@ -68,7 +66,7 @@ Typing the first letter of a listbox item will also focus it.
 The element also support `aria-selected` attribute set on children when `useAriaSelected` property is set. It should be used when the implementation uses different role where `aria-selected` is required.
 
 ```html
-<anypoint-listbox role="tablist" useariaselected>
+<anypoint-listbox role="tablist" useAriaSelected>
   <button role="tab">Tab #1</button>
   <button role="tab">Tab #2</button>
   <button role="tab">Tab #3</button>
