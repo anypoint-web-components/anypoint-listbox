@@ -1,4 +1,8 @@
-# anypoint-listbox
+# Deprecated
+
+This component has been moved to `anypoint-web-components/awc`.
+
+-----
 
 [![Published on NPM](https://img.shields.io/npm/v/@anypoint-web-components/anypoint-listbox.svg)](https://www.npmjs.com/package/@anypoint-web-components/anypoint-listbox)
 
